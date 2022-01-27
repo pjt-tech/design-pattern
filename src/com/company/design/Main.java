@@ -12,6 +12,7 @@ import com.company.design.observer.IButtonListener;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
 import com.company.design.proxy.IBrowser;
+import com.company.design.strategy.*;
 
 import java.sql.BatchUpdateException;
 import java.util.concurrent.atomic.AtomicLong;
@@ -113,6 +114,28 @@ public class Main {
         sftpClient.write();
         sftpClient.read();
         sftpClient.disconnect();*/
+
+        Encoder encoder = new Encoder();
+
+        // base64
+        EncodingStrategy base64 = new Base64Strategy();
+
+        //normal
+        EncodingStrategy normal = new NormalStrategy();
+
+        String message = "hello java";
+
+        encoder.setEncodingStrategy(base64);
+        String base64Result = encoder.getMessage(message);
+        System.out.println(base64Result);
+
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        String appendResult = encoder.getMessage(message);
+        System.out.println(appendResult);
     }
 
     //콘센트
