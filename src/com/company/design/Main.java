@@ -115,6 +115,7 @@ public class Main {
         sftpClient.read();
         sftpClient.disconnect();*/
 
+        /* 전략 패턴
         Encoder encoder = new Encoder();
 
         // base64
@@ -135,7 +136,7 @@ public class Main {
 
         encoder.setEncodingStrategy(new AppendStrategy());
         String appendResult = encoder.getMessage(message);
-        System.out.println(appendResult);
+        System.out.println(appendResult);*/
     }
 
     //콘센트
